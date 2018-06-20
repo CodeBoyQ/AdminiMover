@@ -1,5 +1,7 @@
 package com.codeboyq.AdminiMover;
 
+import java.io.File;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -28,7 +30,9 @@ public class FileMoverTest
         return new TestSuite( FileMoverTest.class );
     }
 
-    public void testMoveFile() {
-
+    public void testMoveFile() throws Exception {
+    	File srcFile = new File ("/Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/InputFolder/Box.pdf");
+    	System.out.println("Ja" + srcFile.exists());
+    	FileMover.moveFile(srcFile, "Hooplot Media BV", "20181112", "Tesla");
     }
 }

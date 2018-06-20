@@ -31,8 +31,8 @@ public class PathCalculatorTest
     }
 
     public void testCalculatePath() throws Exception {
-    	assertTrue(PathCalculator.calculatePath("Hooplot Holding BV", DateUtil.converToDate("20180217")).endsWith(Paths.get("Q1/02 Februari")));
-    	assertTrue(PathCalculator.calculatePath("Hooplot Holding BV", DateUtil.converToDate("20170717")).endsWith(Paths.get("Q3/07 Juli")));
-    	assertTrue(PathCalculator.calculatePath("Hooplot Holding BV", DateUtil.converToDate("20181217")).endsWith(Paths.get("Q4/12 December")));
+    	assertTrue(PathCalculator.calculatePath("Hooplot Holding BV", DateUtil.convertToDate("20180217")).endsWith(Paths.get("Q1/02 Februari")));
+    	assertTrue(PathCalculator.calculatePath("Hooplot Holding BV", DateUtil.convertToDate("20170717")).endsWith(Paths.get("Q3/07 Juli")));
+    	assertTrue(PathCalculator.calculatePath("Hooplot Holding BV", DateUtil.convertToDate("20181217")).endsWith(Paths.get("Q4/12 December")));
     }
 }

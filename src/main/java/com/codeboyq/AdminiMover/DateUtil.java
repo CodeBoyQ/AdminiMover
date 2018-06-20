@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 public class DateUtil {
 
     //TODO: Good exception handleling
-    public static LocalDate converToDate(String dateString) throws Exception {
+    public static LocalDate convertToDate(String dateString) throws Exception {
     	LocalDate date = null;
 		try {
 			DateTimeFormatter DATEFORMATTER = DateTimeFormatter.ofPattern("yyyyMMdd");
