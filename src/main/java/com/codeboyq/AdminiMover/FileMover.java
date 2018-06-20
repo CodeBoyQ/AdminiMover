@@ -2,8 +2,8 @@ package com.codeboyq.AdminiMover;
 
 import java.io.File;
 import java.nio.file.Path;
-import java.time.LocalDate;
 
+import org.apache.commons.io.FileExistsException;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
@@ -21,34 +21,52 @@ public class FileMover {
 	 * @param customer
 	 * @throws Exception 
 	 */
-    public static void moveFile(File srcFile, String myCompany, String dateString, String customer) throws Exception {
+    public static File moveFile(File srcFile, String myCompany, String dateString, String customer) throws Exception {
     	
     	//LOGGER.entry(srcFile, myCompany, dateString, customer);
     	
-    	if (!srcFile.exists() || srcFile.isDirectory()) {
+    	if (!srcFile.exists()) {
     		//TODO: Logger
-    		throw new Exception("Please supply a valid file");
+    		throw new Exception("Please supply an existing file");
     	}
     	
-    	String fileExtension = FilenameUtils.getExtension(srcFile.getName());
+    	if (srcFile.isDirectory()) {
+    		//TODO: Logger
+    		throw new Exception("Please supply a valid file. No directory");
+    	}
     	
-    	if (!fileExtension.equalsIgnoreCase("pdf")) {
+    	if (!FilenameUtils.getExtension(srcFile.getName()).equalsIgnoreCase("pdf")) {
     		//TODO: Logger
     		throw new Exception("Please supply a pdf");   		
     	}
     	
-    	LocalDate date = DateUtil.convertToDate(dateString);
-    	Path destinationPath = PathCalculator.calculatePath(myCompany, date);
-    	File destFile = new File(destinationPath.toFile(), dateString + " " + customer + "." + fileExtension);
+    	Path destinationPath = PathCalculator.calculatePath(myCompany, DateUtil.convertToDate(dateString));
+    	String destinationFilename = new IncomingInvoice(dateString, customer).getFilename();
+    	File destFile = new File(destinationPath.toFile(), destinationFilename);
     	
-    	System.out.println("Dest: " + destFile.getAbsolutePath());
+    	
+    	destFile = getUniqueFilename(destFile);
+ 
     	FileUtils.moveFile(srcFile, destFile);
+
+    	System.out.println("Dest: " + destFile.getAbsolutePath());
     	
-    	FileUtils.moveFile(destFile, srcFile);
-    	
+    	return destFile;
     	//LOGGER.exit(false);
 
     } 
+    
+    private static File getUniqueFilename(File file)
+    {
+        String baseName = FilenameUtils.getBaseName( file.getName() );
+        String extension = FilenameUtils.getExtension( file.getName() );
+        int counter = 1;
+        while(file.exists())
+        {
+            file = new File( file.getParent(), baseName + "_" + (counter++) + "." + extension );
+        }
+        return file;
+    }
     
 
 }

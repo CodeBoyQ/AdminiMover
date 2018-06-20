@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
+import java.time.temporal.IsoFields;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -45,7 +46,7 @@ public class PathCalculator {
     }
 
     private static String getQuarter (LocalDate date) {
-    	int quarter = ((date.getMonth().getValue() - 1) / 3);
+    	int quarter = date.get(IsoFields.QUARTER_OF_YEAR) - 1;
     	String[] quarterKey = {"Q1", "Q2", "Q3", "Q4"};
     	return quarterKey[quarter];
     }
