@@ -1,0 +1,141 @@
+{\rtf1\ansi\ansicpg932\cocoartf949\cocoasubrtf540
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fnil\fcharset128 HiraKakuPro-W3;\f2\froman\fcharset0 TimesNewRomanPSMT;
+}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww12660\viewh13480\viewkind0
+\pard\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li560\ql\qnatural
+
+\f0\b\fs36 \cf0 Get File Path.action
+\b0\fs26 \
+\pard\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li560\ql\qnatural
+
+\fs24 \cf0 Automator action to get file or folder path with POSIX/HFS/URL format\
+\
+\pard\tx3100\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li560\ql\qnatural
+\cf0 Current Version:	1.0 (
+\f1\fs22 32bit/64bit 
+\f0\fs24 Universal Binary)\
+System Requirements:	Mac OS X 10.5 or later (Snow Leopard compatible)\
+Language:	Japanese, English\
+License:	Freeware
+\fs26 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\f1\fs24 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\b\fs28 \cf0 Description
+\b0\fs24 \
+Get File Path.action is an Automator action to get path of the specified file or folder with POSIX, HFS or URL format.  You can create and execute a workflow which contains getting file path operation if you install the action.  \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\ql\qnatural
+\cf0 You can create a service to copy path to clip bord etc. and execute it from Services menu or contextual menu on Snow Leopard.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b\fs28 \cf0 Installation
+\b0\fs24 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li220\fi-220\ql\qnatural
+\cf0 - Select "Import Actions" form Automator File menu, choose "Get File Path.action".\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf0 \
+
+\b\fs28 Uninstallation
+\b0\fs24 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li220\fi-220\ql\qnatural
+\cf0 - Remove "Get File Path.action" from ~/Library/Automator folder.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural
+\cf0 \
+
+\b\fs28 Samples
+\b0\fs24 \
+There are some samples in the folder "sample workflows".\
+\
+
+\b\fs28 Detailed Description
+\b0\fs24 \
+Input: Files/Folders\
+Output: Text\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sb80\ql\qnatural
+
+\b \cf0 POSIX(Unix)/HFS/URL radio button
+\b0 \
+\pard\tx560\tx1840\li660\fi40\ql\qnatural
+\cf0 Select a radio button to set path type.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sb80\ql\qnatural
+
+\b \cf0 Abbreviated POSIX path
+\b0 \
+\pard\tx560\tx1840\li660\fi40\ql\qnatural
+\cf0 POSIX path option to toggle full path or abbreviated POSIX path using ~ for a file or a folder inside the home directory.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sb80\ql\qnatural
+
+\b \cf0 Escaped POSIX path
+\b0 \
+\pard\tx560\tx1840\li660\fi40\ql\qnatural
+\cf0 Escape shell special character (blank, ?, * etc.) in POSIX path with back slash (\\) or not.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sb80\ql\qnatural
+
+\b \cf0 Basic URL
+\b0 \
+\pard\tx560\tx1840\li660\fi40\ql\qnatural
+\cf0 Turn on the checkbox if you want to get <sheme>://<host name>/<path> URL for a item on a mounted server without user name and/or port number etc. .\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sb80\ql\qnatural
+
+\b \cf0 Enclose path with
+\b0 \
+\pard\tx560\tx1840\li660\fi40\ql\qnatural
+\cf0 Turn on the checkbox if you want to enclose path with one of "\'85\'85", '\'85\'85', <\'85\'85>.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\sb80\ql\qnatural
+
+\b \cf0 Delimiter for multiple items
+\b0 \
+\pard\tx560\tx1840\li660\fi40\ql\qnatural
+\cf0 Select a delimiter to delimit multiple paths.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural
+
+\b\fs28 \cf0 About symbolic link path
+\b0\fs24 \
+\pard\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb100\ql\qnatural
+
+\f2\fs26 \cf0 When a \ul symbolic link\ulnone  is selected,
+\f0\fs24  "Get Selected Finder Items" action outputs 
+\f2\fs26 the linked original file's path.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural
+
+\f0\fs24 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b\fs28 \cf0 Distribution Conditions
+\b0\fs24 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li560\ri-100\ql\qnatural
+\cf0 Attention about copyright and distribution, and use\
+--------------------------------------------------------\
+Get File Path.action  is freeware. The copyright belongs to the author.\
+\
+Get File Path.action  may be distributed freely. However, please do not change the contents of the distribution package.\
+\
+This software is 'AS IS' software. The author does not have fault etc. in a program. Although it is endeavoring as much as possible like, it cannot be guaranteed that there is no fault.\
+\
+Please carry out in a user's own responsibility on the occasion of use. The author does not assume responsibility about any damage generated by having used this software. I do that this software uses it as having understood all notes currently written here simultaneously.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf0 \
+\
+
+\b\fs28 Version History
+\b0\fs24 \
+1.0		2009-09\
+\pard\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li260\fi-120\ql\qnatural
+\cf0 - initial release\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf0 \
+\pard\tx0\tx1120\tx2240\tx3360\tx4480\tx5600\tx6720\tx7840\tx8960\tx10080\tx11200\tx12320\tx13440\tx14560\tx15680\tx16800\tx17920\tx19040\tx20160\tx21280\tx22400\tx23520\tx24640\tx25760\tx26880\tx28000\tx29120\tx30240\tx31360\tx32480\tx33600\tx34720\ql\qnatural
+\cf0 If you have suggestions, want to report bugs and so on, contact me at \ul  miko@mail.wind.ne.jp\ulnone \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf0 _______________________________________________________________\
+MIKOZAWA Akira\
+e-mal  miko@mail.wind.ne.jp\
+http://www5.wind.ne.jp/miko/\
+}
