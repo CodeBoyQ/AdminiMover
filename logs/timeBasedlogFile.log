@@ -1,2 +1,19 @@
 270 [main] INFO  c.c.A.service.AdminFileService - Test
 338 [main] INFO  c.c.A.service.AdminFileService - Test
+436 [main] INFO  c.c.A.domain.AdminPathFactory - Root Directory: /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder
+Category: 1. Inkoop
+MyCompanies: [Hooplot Holding BV, Hooplot Media BV]
+
+431 [main] INFO  c.c.A.domain.AdminPathFactory - Root Directory: /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder
+Category: 1. Inkoop
+MyCompanies: [Hooplot Holding BV, Hooplot Media BV]
+
+421 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded
+424 [main] DEBUG c.c.A.domain.AdminPathFactory - Root Directory: /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder
+Category: 1. Inkoop
+MyCompanies: [Hooplot Holding BV, Hooplot Media BV]
+
+659 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded
+475 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded
+566 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded
+502 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded

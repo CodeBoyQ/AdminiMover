@@ -1,26 +1,55 @@
 package com.codeboyq.AdminiMover.domain;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.time.temporal.IsoFields;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
+import org.yaml.snakeyaml.Yaml;
 
 public class AdminPathFactory {
 	
-	private static final XLogger logger = XLoggerFactory.getXLogger(AdminPathFactory.class);
+	private final XLogger logger = XLoggerFactory.getXLogger(AdminPathFactory.class);
 
-	public static final String ROOT_DIRECTORY = "/Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder"; //TODO: Properties file + /Users/astronauta/Dropbox/admin zakelijk
-	public static final String CATEGORY = "1. Inkoop";
-	public static final List<String> COMPANY = Arrays.asList("Hooplot Holding BV","Hooplot Media BV"); //TODO: Enumerations
+	static private AdminPathFactory instance = null;
+	public static String ROOT_DIRECTORY;
+	public static String CATEGORY;
+	public static List<String> COMPANY;
+	
+	protected AdminPathFactory() {
+		logger.entry();
+		Configuration config = null;
+		ClassLoader classLoader = getClass().getClassLoader();
+        try( InputStream in = Files.newInputStream(Paths.get(classLoader.getResource("adminimover-config.yml").getPath()))) {
+            config = new Yaml().loadAs( in, Configuration.class );
+        } catch (IOException e) {
+			logger.error("Unable to read config file");
+		}
+        ROOT_DIRECTORY = config.getRootDirectory();
+        CATEGORY = config.getCategory();
+        COMPANY = config.getMyCompanies();
+        logger.info("Configuration loaded");
+        logger.debug(config.toString());
+        logger.exit();
+	}
+	
+    public static AdminPathFactory instance() {
+        if (instance == null) {
+            instance = new AdminPathFactory();
+        }
+        return instance;
+    }
 
-	public static AdminPath getInstance(String myCompany, String dateString, String customer) throws Exception {
+	public AdminPath getAdminPath(String myCompany, String dateString, String customer) throws Exception {
 		logger.entry(myCompany, dateString, customer);
 		
 		checkRootDirectory(ROOT_DIRECTORY);
@@ -35,7 +64,7 @@ public class AdminPathFactory {
 				getMonthPart(date)));    	
 	}
 	
-	private static void checkRootDirectory(String rootDirectory) throws Exception {
+	private void checkRootDirectory(String rootDirectory) throws Exception {
 		logger.entry(rootDirectory);
 		if (!new File(rootDirectory).exists()) {
 			throw new Exception("Root directory " + ROOT_DIRECTORY + " does not exist!");
@@ -43,7 +72,7 @@ public class AdminPathFactory {
 		logger.exit();
 	}
 	
-	private static void checkMyCompany(String myCompany) throws Exception {
+	private void checkMyCompany(String myCompany) throws Exception {
 		logger.entry(myCompany);
     	if (!COMPANY.contains(myCompany)) {
     		throw new Exception("Company name " + myCompany + " is invalid. Please use a valid Company name.");
@@ -51,7 +80,7 @@ public class AdminPathFactory {
     	logger.exit();
 	}
 	
-    private static LocalDate checkDateString(String dateString) throws Exception {
+    private LocalDate checkDateString(String dateString) throws Exception {
     	logger.entry(dateString);
     	LocalDate date = null;
 		try {
@@ -65,11 +94,11 @@ public class AdminPathFactory {
         return logger.exit(date);
     }
     
-    private static String getYearPart(LocalDate date) {
+    private String getYearPart(LocalDate date) {
     	return String.valueOf(date.getYear());
     }
 	
-    private static String getMonthPart (LocalDate date) {
+    private String getMonthPart (LocalDate date) {
     	logger.entry(date);
     	String maskedMonthNr = String.format("%02d", date.getMonthValue());
     	String dutchMonthName = date.getMonth().getDisplayName( TextStyle.FULL , new Locale.Builder().setLanguage("nl").build()) ;
@@ -77,7 +106,7 @@ public class AdminPathFactory {
     	return logger.exit(maskedMonthNr + " " + dutchMonthNameCapitalized); //Output example: 07 Augustus
     }
 
-    private static String getQuarterPart (LocalDate date) {
+    private String getQuarterPart (LocalDate date) {
     	logger.entry(date);
     	int quarter = date.get(IsoFields.QUARTER_OF_YEAR) - 1;
     	String[] quarterKey = {"Q1", "Q2", "Q3", "Q4"};

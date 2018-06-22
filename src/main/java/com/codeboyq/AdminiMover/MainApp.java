@@ -30,7 +30,7 @@ public class MainApp {
 
     public static void main( String[] args ) throws Exception {
     	logger.entry(args[0], args[1], args[2], args[3]);
-    	
+
     	if (args.length < 4) {
     		throw new Exception("Please give valid arguments: 1. Source filePath 2. My Company 3. Datestring yyyyMMdd 4. Customer");
     	}

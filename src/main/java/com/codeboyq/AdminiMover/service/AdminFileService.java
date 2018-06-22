@@ -30,21 +30,21 @@ public class AdminFileService {
     	
     	File srcFile = new File (srcFilePath);
     	if (!srcFile.exists()) {
-    		//TODO: Logger
+    		logger.error("Please supply an existing file");
     		throw new Exception("Please supply an existing file");
     	}
     	
     	if (srcFile.isDirectory()) {
-    		//TODO: Logger
+    		logger.error("Please supply a valid file. No directory");
     		throw new Exception("Please supply a valid file. No directory");
     	}
     	
     	if (!FilenameUtils.getExtension(srcFile.getName()).equalsIgnoreCase("pdf")) {
-    		//TODO: Logger
+    		logger.error("Please supply a pdf");
     		throw new Exception("Please supply a pdf");   		
     	}
-    	
-    	AdminPath adminPath = AdminPathFactory.getInstance(myCompany, dateString, customer);
+    
+    	AdminPath adminPath = AdminPathFactory.instance().getAdminPath(myCompany, dateString, customer);
     	IncomingInvoice invoice = new IncomingInvoice(dateString, customer);
     	File destFile = new File(adminPath.getFile(), invoice.getFilename());
     	destFile = getUniqueFilename(destFile);

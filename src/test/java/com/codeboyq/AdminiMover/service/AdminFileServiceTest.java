@@ -1,17 +1,15 @@
 package com.codeboyq.AdminiMover.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
-import java.lang.module.Configuration;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import org.apache.commons.io.FileUtils;
 import org.yaml.snakeyaml.Yaml;
-
 import com.codeboyq.AdminiMover.domain.AdminPathFactory;
-
+import com.codeboyq.AdminiMover.domain.Configuration;
 import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -102,9 +100,9 @@ public class AdminFileServiceTest
     	FileUtils.deleteQuietly(movedFile);
     }
 	
-	public void test() {
+	public void test() throws IOException {
         Yaml yaml = new Yaml();  
-        try( InputStream in = Files.newInputStream( Paths.get("/") ) ) {
+        try( InputStream in = Files.newInputStream( Paths.get("/Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/main/resources/adminimover-config.yml") ) ) {
             Configuration config = yaml.loadAs( in, Configuration.class );
             System.out.println( config.toString() );
         }
