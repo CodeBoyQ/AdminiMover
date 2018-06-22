@@ -17,3 +17,9 @@ MyCompanies: [Hooplot Holding BV, Hooplot Media BV]
 475 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded
 566 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded
 502 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded
+455 [main] ERROR c.c.A.domain.AdminPathFactory - Unable to read config file
+409 [main] ERROR c.c.A.domain.AdminPathFactory - Unable to read config file
+347 [main] ERROR c.c.A.domain.AdminPathFactory - Unable to read config file
+283 [main] ERROR c.c.A.domain.AdminPathFactory - Unable to read config file
+544 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded
+450 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded

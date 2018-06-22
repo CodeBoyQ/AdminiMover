@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.time.temporal.IsoFields;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -27,18 +28,12 @@ public class AdminPathFactory {
 	
 	protected AdminPathFactory() {
 		logger.entry();
-		Configuration config = null;
-		ClassLoader classLoader = getClass().getClassLoader();
-        try( InputStream in = Files.newInputStream(Paths.get(classLoader.getResource("adminimover-config.yml").getPath()))) {
-            config = new Yaml().loadAs( in, Configuration.class );
-        } catch (IOException e) {
-			logger.error("Unable to read config file");
-		}
-        ROOT_DIRECTORY = config.getRootDirectory();
-        CATEGORY = config.getCategory();
-        COMPANY = config.getMyCompanies();
+		//TODO: Fix
+        ROOT_DIRECTORY = "/Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder";
+        CATEGORY = "1. Inkoop";
+        COMPANY = Arrays.asList("Hooplot Holding BV","Hooplot Media BV");
         logger.info("Configuration loaded");
-        logger.debug(config.toString());
+      //readConfiguration();
         logger.exit();
 	}
 	
@@ -87,8 +82,7 @@ public class AdminPathFactory {
 			DateTimeFormatter DATEFORMATTER = DateTimeFormatter.ofPattern("yyyyMMdd");
 			date = LocalDate.parse(dateString, DATEFORMATTER);
 		} catch (Exception e) {
-			//TODO: LOGGER gebruiken
-			System.out.println("Please use a valid yyyyMMdd dateString. " + dateString + " is not a valid String.");
+			logger.error("Please use a valid yyyyMMdd dateString. {} is not a valid String.", dateString);
 			throw new Exception();
 		}
         return logger.exit(date);
@@ -111,5 +105,20 @@ public class AdminPathFactory {
     	int quarter = date.get(IsoFields.QUARTER_OF_YEAR) - 1;
     	String[] quarterKey = {"Q1", "Q2", "Q3", "Q4"};
     	return logger.exit(quarterKey[quarter]);
+    }
+    
+    private void readConfiguration() {
+		logger.entry();
+		Configuration config = null;
+        try(InputStream in = Files.newInputStream(Paths.get(ClassLoader.getSystemResource("adminimover-config.yml").getPath()))) {
+            config = new Yaml().loadAs(in, Configuration.class );
+        } catch (IOException e) {
+			logger.error("Unable to read config file");
+		}
+        ROOT_DIRECTORY = config.getRootDirectory();
+        CATEGORY = config.getCategory();
+        COMPANY = config.getMyCompanies();
+        logger.debug(config.toString());
+        logger.exit();    	
     }
 }
