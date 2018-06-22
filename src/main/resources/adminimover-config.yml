@@ -1,0 +1,14 @@
+# Connection parameters
+connection:
+    url: jdbc:mysql://localhost:3306/db
+    poolSize: 5
+
+# Protocols
+protocols:
+   - http
+   - https
+
+# Users
+users:
+    tom: passwd
+    bob: passwd
