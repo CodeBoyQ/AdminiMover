@@ -1,2 +1,0 @@
-AdminMiniMover Droplet
-======================
