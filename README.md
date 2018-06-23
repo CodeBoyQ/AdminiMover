@@ -8,3 +8,6 @@ AdminiMover
 AdminiMover-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
 java -jar AdminiMover-0.0.1-SNAPSHOT-jar-with-dependencies.jar "Rick" "Ross"
+
+
+chmod -R 755 .

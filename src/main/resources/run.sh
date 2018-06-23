@@ -47,4 +47,4 @@ read inputCustomer
 echo "Customer: $inputCustomer"
 
 cd ${0%/*}
-java -jar "AdminiMover-0.0.1-SNAPSHOT-jar-with-dependencies.jar" "$inputFile" "$myCompany" "$inputDate" "$inputCustomer"
+java -jar "adminiMoverApp.jar" "$inputFile" "$myCompany" "$inputDate" "$inputCustomer"

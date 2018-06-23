@@ -1,0 +1,3 @@
+259 [main] INFO  com.codeboyq.AdminiMover.MainApp - AdminiMover : input file: /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/dist/AdminiMoverApp/8978080_379536236.pdf
+263 [main] INFO  c.c.A.domain.AdminPathFactory - Jar file not on classpath. Reading directly from the filesystem
+397 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Dropbox/admin zakelijk/Hooplot Media BV/2018/1. Inkoop/Q2/06 Juni/20180619 Ziggo.pdf

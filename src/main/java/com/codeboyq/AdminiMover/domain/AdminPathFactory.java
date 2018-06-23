@@ -1,15 +1,13 @@
 package com.codeboyq.AdminiMover.domain;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.time.temporal.IsoFields;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -26,18 +24,17 @@ public class AdminPathFactory {
 	public static String CATEGORY;
 	public static List<String> COMPANY;
 	
-	protected AdminPathFactory() {
+	protected AdminPathFactory() throws IOException {
 		logger.entry();
-		//TODO: Fix
-        ROOT_DIRECTORY = "/Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder";
-        CATEGORY = "1. Inkoop";
-        COMPANY = Arrays.asList("Hooplot Holding BV","Hooplot Media BV");
-        logger.info("Configuration loaded");
-      //readConfiguration();
+        Configuration config = readConfiguration();
+        ROOT_DIRECTORY = config.getRootDirectory();
+        CATEGORY = config.getCategory();
+        COMPANY = config.getMyCompanies();
+        logger.debug(config.toString());
         logger.exit();
 	}
 	
-    public static AdminPathFactory instance() {
+    public static AdminPathFactory instance() throws IOException {
         if (instance == null) {
             instance = new AdminPathFactory();
         }
@@ -107,18 +104,31 @@ public class AdminPathFactory {
     	return logger.exit(quarterKey[quarter]);
     }
     
-    private void readConfiguration() {
+    private Configuration readConfiguration() throws IOException {
 		logger.entry();
-		Configuration config = null;
-        try(InputStream in = Files.newInputStream(Paths.get(ClassLoader.getSystemResource("adminimover-config.yml").getPath()))) {
-            config = new Yaml().loadAs(in, Configuration.class );
+		
+		InputStream in = null;
+        try {
+        	//First try to read the configuration from classpath
+        	in = AdminPathFactory.class.getClassLoader().getResourceAsStream("adminimover-config.yml");
+			if (in == null) {
+				// Secondly try to read the configuration directly from the filesystem (used when executable jar is ran)
+				logger.info("Jar file not on classpath. Reading directly from the filesystem");
+				File jarPath = new File(AdminPathFactory.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+				String propertiesPath = jarPath.getParentFile().getAbsolutePath();
+				in = new FileInputStream(propertiesPath + "/adminimover-config.yml");
+			}
+			
+			return logger.exit(new Yaml().loadAs(in, Configuration.class)); 
+			
         } catch (IOException e) {
 			logger.error("Unable to read config file");
+			throw new IOException("Unable to read config file", e);
+		} finally {
+			if (in!=null) {
+				in.close();
+			}
 		}
-        ROOT_DIRECTORY = config.getRootDirectory();
-        CATEGORY = config.getCategory();
-        COMPANY = config.getMyCompanies();
-        logger.debug(config.toString());
-        logger.exit();    	
+    	
     }
 }

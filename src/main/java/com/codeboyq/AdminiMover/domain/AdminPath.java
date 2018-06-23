@@ -14,7 +14,7 @@ public class AdminPath {
 	String monthPart;
 
 	public AdminPath(String baseDirectory, String myCompanyPart, String yearPart, String categoryPart,
-			String quarterPart, String monthPart) {
+		String quarterPart, String monthPart) {
 		this.baseDirectory = baseDirectory;
 		this.myCompanyPart = myCompanyPart;
 		this.yearPart = yearPart;

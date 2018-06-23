@@ -35,14 +35,9 @@ public class MainApp {
     		throw new Exception("Please give valid arguments: 1. Source filePath 2. My Company 3. Datestring yyyyMMdd 4. Customer");
     	}
     	
-    	logger.info("Starting move of file: {}", args[0]);
-    	File destFile = AdminFileService.moveFile(
-    			args[0], 
-    			args[1], 
-    			args[2],
-    			args[3]);
+    	logger.info("AdminiMover : input file: {}", args[0]);
+    	AdminFileService.moveFile(args[0], args[1], args[2], args[3]);
     	
-    	logger.info("File moved to {}", destFile.getAbsolutePath());
     	logger.exit();
     
     }

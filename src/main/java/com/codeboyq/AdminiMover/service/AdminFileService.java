@@ -49,7 +49,7 @@ public class AdminFileService {
     	File destFile = new File(adminPath.getFile(), invoice.getFilename());
     	destFile = getUniqueFilename(destFile);
     	FileUtils.moveFile(srcFile, destFile);
-
+    	logger.info("File moved to {}", destFile.getAbsolutePath());
     	return logger.exit(destFile);
 
     } 

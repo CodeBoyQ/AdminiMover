@@ -1,25 +1,7 @@
-270 [main] INFO  c.c.A.service.AdminFileService - Test
-338 [main] INFO  c.c.A.service.AdminFileService - Test
-436 [main] INFO  c.c.A.domain.AdminPathFactory - Root Directory: /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder
-Category: 1. Inkoop
-MyCompanies: [Hooplot Holding BV, Hooplot Media BV]
-
-431 [main] INFO  c.c.A.domain.AdminPathFactory - Root Directory: /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder
-Category: 1. Inkoop
-MyCompanies: [Hooplot Holding BV, Hooplot Media BV]
-
-421 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded
-424 [main] DEBUG c.c.A.domain.AdminPathFactory - Root Directory: /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder
-Category: 1. Inkoop
-MyCompanies: [Hooplot Holding BV, Hooplot Media BV]
-
-659 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded
-475 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded
-566 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded
-502 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded
-455 [main] ERROR c.c.A.domain.AdminPathFactory - Unable to read config file
-409 [main] ERROR c.c.A.domain.AdminPathFactory - Unable to read config file
-347 [main] ERROR c.c.A.domain.AdminPathFactory - Unable to read config file
-283 [main] ERROR c.c.A.domain.AdminPathFactory - Unable to read config file
-544 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded
-450 [main] INFO  c.c.A.domain.AdminPathFactory - Configuration loaded
+395 [main] INFO  c.c.A.service.AdminFileService - Check
+517 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder2/Hooplot Media BV/2018/1. Inkoop/Q4/11 November/20181115 Boy_3.pdf
+419 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder/Hooplot Media BV/2018/1. Inkoop/Q4/11 November/20181115 Boy.pdf
+472 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder2/Hooplot Media BV/2018/1. Inkoop/Q4/11 November/20181115 Boy_4.pdf
+403 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder/Hooplot Media BV/2018/1. Inkoop/Q4/11 November/20181115 Boy_1.pdf
+330 [main] INFO  com.codeboyq.AdminiMover.MainApp - AdminiMover : input file: /var/folders/2x/jjvwhxd91f51xn6wswb453mh0000gn/T/Invoice13707868239339348279.pdf
+526 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder/Hooplot Media BV/2019/1. Inkoop/Q1/01 Januari/20190101 Santigold.pdf

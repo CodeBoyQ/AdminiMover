@@ -1,15 +1,10 @@
 package com.codeboyq.AdminiMover.service;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import org.apache.commons.io.FileUtils;
-import org.yaml.snakeyaml.Yaml;
 import com.codeboyq.AdminiMover.domain.AdminPathFactory;
-import com.codeboyq.AdminiMover.domain.Configuration;
 import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -19,14 +14,12 @@ public class AdminFileServiceTest
     extends TestCase
 {
 
-    public AdminFileServiceTest( String testName )
-    {
+    public AdminFileServiceTest( String testName ) {
         super( testName );
     }
 
-    public static Test suite()
-    {
-        return new TestSuite( AdminFileServiceTest.class );
+    public static Test suite() {
+        return new TestSuite(AdminFileServiceTest.class);
     }
     
 	public void testMoveFile1() throws Exception {
@@ -99,15 +92,5 @@ public class AdminFileServiceTest
     	Assert.assertTrue(thrown);
     	FileUtils.deleteQuietly(movedFile);
     }
-	
-	public void test() throws IOException {
-        Yaml yaml = new Yaml();  
-        try( InputStream in = Files.newInputStream( Paths.get("/Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/main/resources/adminimover-config.yml") ) ) {
-            Configuration config = yaml.loadAs( in, Configuration.class );
-            System.out.println( config.toString() );
-        }
-	}
-	
-	
 
 }
