@@ -1,0 +1,9 @@
+532 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder/Hooplot Holding BV/2019/1. Inkoop/Q3/08 Augustus/20190823 Good Music.pdf
+528 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder/Hooplot Holding BV/2019/1. Inkoop/Q3/08 Augustus/20190823 Good Music_1.pdf
+213 [main] INFO  com.codeboyq.AdminiMover.MainApp - AdminiMover : input file: /var/folders/2x/jjvwhxd91f51xn6wswb453mh0000gn/T/Invoice52147244787053608.pdf
+324 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder/Hooplot Media BV/2019/1. Inkoop/Q1/01 Januari/20190101 Santigold_1.pdf
+326 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder/Hooplot Media BV/2018/1. Inkoop/Q4/11 November/20181115 Tesla.pdf
+327 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder/Hooplot Holding BV/2019/1. Inkoop/Q3/08 Augustus/20190823 Good Music_1.pdf
+328 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder/Hooplot Holding BV/2018/1. Inkoop/Q1/01 Januari/20180101 Wilde Haren de Podcast.pdf
+329 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder/Hooplot Holding BV/2018/1. Inkoop/Q1/01 Januari/20180101 Wilde Haren de Podcast_1.pdf
+332 [main] ERROR c.c.A.domain.AdminPathFactory - Please use a valid yyyyMMdd dateString. 20184015 is not a valid String.

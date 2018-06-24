@@ -6,7 +6,7 @@
 
 clear 
 
-echo "AminiMover"
+echo "AdminiMover"
 echo "Input file: $1"
 inputFile="$1"
 
