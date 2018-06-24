@@ -1,0 +1,10 @@
+# Root directory
+rootDirectory: /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder
+
+# Root directory
+category: 1. Inkoop
+
+# My companies
+myCompanies:
+   - Hooplot Holding BV
+   - Hooplot Media BV

@@ -1,38 +1,25 @@
 package com.codeboyq.AdminiMover;
 
+import java.io.File;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-/**
- * Unit test for simple App.
- */
-public class MainAppTest 
-    extends TestCase
+public class MainAppTest extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public MainAppTest( String testName )
-    {
-        super( testName );
+
+    public MainAppTest(String testName) {
+        super(testName);
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( MainAppTest.class );
+    public static Test suite() {
+        return new TestSuite(MainAppTest.class);
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    public void testMainApp() throws Exception {
+    	File inputFile = File.createTempFile("Invoice", ".pdf");
+        String[] args = {inputFile.getPath(), "Hooplot Media BV", "20190101", "Santigold"};
+        MainApp.main(args);
     }
 }
