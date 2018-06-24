@@ -109,10 +109,10 @@ public class AdminPathFactory {
 		
 		InputStream in = null;
         try {
-        	//First try to read the configuration from classpath
+        	//First try to read the configuration file from classpath (used when tests are ran)
         	in = AdminPathFactory.class.getClassLoader().getResourceAsStream("adminimover-config.yml");
 			if (in == null) {
-				// Secondly try to read the configuration directly from the filesystem (used when executable jar is ran)
+				// Secondly try to read the configuration file directly from the filesystem (used when executable jar is ran)
 				logger.info("Jar file not on classpath. Reading directly from the filesystem");
 				File jarPath = new File(AdminPathFactory.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 				String propertiesPath = jarPath.getParentFile().getAbsolutePath();
