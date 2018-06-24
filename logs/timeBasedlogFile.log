@@ -1,7 +1,0 @@
-395 [main] INFO  c.c.A.service.AdminFileService - Check
-517 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder2/Hooplot Media BV/2018/1. Inkoop/Q4/11 November/20181115 Boy_3.pdf
-419 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder/Hooplot Media BV/2018/1. Inkoop/Q4/11 November/20181115 Boy.pdf
-472 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder2/Hooplot Media BV/2018/1. Inkoop/Q4/11 November/20181115 Boy_4.pdf
-403 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder/Hooplot Media BV/2018/1. Inkoop/Q4/11 November/20181115 Boy_1.pdf
-330 [main] INFO  com.codeboyq.AdminiMover.MainApp - AdminiMover : input file: /var/folders/2x/jjvwhxd91f51xn6wswb453mh0000gn/T/Invoice13707868239339348279.pdf
-526 [main] INFO  c.c.A.service.AdminFileService - File moved to /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder/Hooplot Media BV/2019/1. Inkoop/Q1/01 Januari/20190101 Santigold.pdf

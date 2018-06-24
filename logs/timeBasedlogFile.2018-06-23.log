@@ -1,3 +1,0 @@
-7469 [main] ERROR c.c.A.domain.AdminPathFactory - Jar file not on classpath. Reading from filesystem
-6449 [main] ERROR c.c.A.domain.AdminPathFactory - Jar file not on classpath. Reading from filesystem
-7980 [main] INFO  c.c.A.domain.AdminPathFactory - Jar file not on classpath. Reading directly from the filesystem
