@@ -364,7 +364,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>on run {input, parameters}-- Get the directory of the scripttell application "Finder"    set currentDir to POSIX path of ((container of (path to me)) as text)end tell-- Run the Shell script with the Automator FilePath variable as parametertell application "Terminal"    activate	set filePath to (item 1 of input)	do script "cd '" &amp; currentDir &amp; "/Binaries' &amp;&amp; ./run.sh '" &amp; filePath &amp; "'"end tellend run</string>
+					<string>on run {input, parameters}-- Get the directory of the scripttell application "Finder"    set currentDir to POSIX path of ((container of (path to me)) as text)end tell-- Run the Shell script with the Automator FilePath variable as parametertell application "Terminal"    activate	set filePath to (item 1 of input)	do script "cd '" &amp; currentDir &amp; "/_Binaries' &amp;&amp; ./run.sh '" &amp; filePath &amp; "'"end tellend run</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
@@ -428,14 +428,14 @@ end run</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>6592AD5A-4DE3-4501-9BD5-9A9D7C702656</key>
+		<key>C3D8E4FD-4802-4579-9041-795326B589AA</key>
 		<dict>
 			<key>from</key>
 			<string>441E5DE5-7327-436A-9475-5219DCB20944 - 441E5DE5-7327-436A-9475-5219DCB20944</string>
 			<key>to</key>
 			<string>8C1F9056-F5C6-4DD7-B36B-149DB3FE412C - 8C1F9056-F5C6-4DD7-B36B-149DB3FE412C</string>
 		</dict>
-		<key>F5608727-B6E8-4765-A523-6078C82CD38C</key>
+		<key>DD74DCA9-9710-41ED-935A-55C2A8507EAA</key>
 		<dict>
 			<key>from</key>
 			<string>8C1F9056-F5C6-4DD7-B36B-149DB3FE412C - 8C1F9056-F5C6-4DD7-B36B-149DB3FE412C</string>

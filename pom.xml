@@ -5,7 +5,7 @@
 
 	<groupId>com.codeboyq</groupId>
 	<artifactId>AdminiMover</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>AdminiMover</name>
@@ -24,7 +24,7 @@
 		<maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
 		<maven.antrun.plugin.version>1.8</maven.antrun.plugin.version>
 		<output.dir>dist/AdminiMoverApp</output.dir>
-		<output.dir.binaries>${output.dir}/Binaries</output.dir.binaries>
+		<output.dir.binaries>${output.dir}/_Binaries</output.dir.binaries>
 	</properties>
 
 	<dependencies>
@@ -183,8 +183,8 @@
 						<phase>process-test-classes</phase>
 						<configuration>
 							<target>
-								<chmod dir="dist/AdminiMoverApp/AdminiMover.app/Contents/MacOS/Application Stub" perm="755" />
-								<chmod file="dist/AdminiMoverApp/Binaries/run.sh" perm="755" />
+								<chmod dir="${output.dir}/AdminiMover.app/Contents/MacOS/Application Stub" perm="755" />
+								<chmod file="${output.dir.binaries}/run.sh" perm="755" />
 							</target>
 						</configuration>
 						<goals>
