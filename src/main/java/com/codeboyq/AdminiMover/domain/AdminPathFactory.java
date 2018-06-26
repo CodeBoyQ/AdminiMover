@@ -10,6 +10,7 @@ import java.util.Locale;
 import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
 
+import com.codeboyq.AdminiMover.AdminiMoverException;
 import com.codeboyq.AdminiMover.common.Configuration;
 import com.codeboyq.AdminiMover.service.AdminFileService;
 
@@ -32,7 +33,7 @@ public class AdminPathFactory {
         return instance;
     }
 
-	public AdminPath getAdminPath(String myCompany, String dateString, String customer) throws Exception {
+	public AdminPath getAdminPath(String myCompany, String dateString, String customer) {
 		logger.entry(myCompany, dateString, customer);
 		
 		checkRootDirectory(config.getRootDirectory());
@@ -47,18 +48,18 @@ public class AdminPathFactory {
 				getMonthPart(date)));    	
 	}
 	
-	private void checkRootDirectory(String rootDirectory) throws Exception {
+	private void checkRootDirectory(String rootDirectory) throws AdminiMoverException {
 		logger.entry(rootDirectory);
 		if (!new File(rootDirectory).exists()) {
-			throw new Exception("Root directory " + rootDirectory + " does not exist!");
+			throw new AdminiMoverException("Root directory " + rootDirectory + " does not exist!");
 		}
 		logger.exit();
 	}
 	
-	private void checkMyCompany(String myCompany) throws Exception {
+	private void checkMyCompany(String myCompany) throws AdminiMoverException {
 		logger.entry(myCompany);
     	if (!config.getMyCompanies().contains(myCompany)) {
-    		throw new Exception("Company name " + myCompany + " is invalid. Please use a valid Company name.");
+    		throw new AdminiMoverException("Company name " + myCompany + " is invalid. Please use a valid Company name.");
     	}
     	logger.exit();
 	}

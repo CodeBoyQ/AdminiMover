@@ -9,6 +9,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
 
+import com.codeboyq.AdminiMover.AdminiMoverException;
 import com.codeboyq.AdminiMover.domain.AdminPath;
 import com.codeboyq.AdminiMover.domain.AdminPathFactory;
 import com.codeboyq.AdminiMover.domain.IncomingInvoice;
@@ -25,25 +26,25 @@ public class AdminFileService {
 	 * @param myCompany
 	 * @param date
 	 * @param customer
-	 * @throws Exception 
+	 * @throws AdminiMoverException 
 	 */
-    public static File moveFile(String srcFilePath, String myCompany, String dateString, String customer) throws Exception {	
+    public static File moveFile(String srcFilePath, String myCompany, String dateString, String customer) throws AdminiMoverException {	
     	logger.entry(srcFilePath, myCompany, dateString, customer);
     	
     	File srcFile = new File (srcFilePath);
     	if (!srcFile.exists()) {
     		logger.error("Please supply an existing file");
-    		throw new Exception("Please supply an existing file");
+    		throw new AdminiMoverException("Please supply an existing file");
     	}
     	
     	if (srcFile.isDirectory()) {
     		logger.error("Please supply a valid file. No directory");
-    		throw new Exception("Please supply a valid file. No directory");
+    		throw new AdminiMoverException("Please supply a valid file. No directory");
     	}
     	
     	if (!FilenameUtils.getExtension(srcFile.getName()).equalsIgnoreCase("pdf")) {
     		logger.error("Please supply a pdf");
-    		throw new Exception("Please supply a pdf");   		
+    		throw new AdminiMoverException("Please supply a pdf");   		
     	}
     
     	AdminPath adminPath = AdminPathFactory.instance().getAdminPath(myCompany, dateString, customer);
@@ -67,7 +68,7 @@ public class AdminFileService {
 		}
     }
     
-    public static LocalDate getDate(String dateString) throws Exception {
+    public static LocalDate getDate(String dateString) throws AdminiMoverException {
     	logger.entry(dateString);
     	LocalDate date = null;
 		try {
@@ -75,7 +76,7 @@ public class AdminFileService {
 			date = LocalDate.parse(dateString, DATEFORMATTER);
 		} catch (Exception e) {
 			logger.error("Please use a valid yyyyMMdd dateString. {} is not a valid String.", dateString);
-			throw new Exception();
+			throw new AdminiMoverException("Please use a valid yyyyMMdd dateString. " + dateString + " is not a valid String.");
 		}
         return logger.exit(date);    	
     }

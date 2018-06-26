@@ -1,12 +1,15 @@
 package com.codeboyq.AdminiMover.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import org.apache.commons.io.FileUtils;
 
+import com.codeboyq.AdminiMover.AdminiMoverException;
 import com.codeboyq.AdminiMover.common.Configuration;
-import com.codeboyq.AdminiMover.domain.AdminPathFactory;
+
 import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -24,8 +27,8 @@ public class AdminFileServiceTest
         return new TestSuite(AdminFileServiceTest.class);
     }
     
-	public void testMoveFile1() throws Exception {
-    	File inputFile = File.createTempFile("Invoice", ".pdf"); 
+	public void testMoveFile1() throws AdminiMoverException {
+    	File inputFile = createTemporaryFile();
     	File movedFile = AdminFileService.moveFile(inputFile.getPath(), "Hooplot Media BV", "20181115", "Tesla");
     	
         Path relativePath = Paths.get(Configuration.instance().getRootDirectory()).relativize(movedFile.toPath());
@@ -40,8 +43,8 @@ public class AdminFileServiceTest
     	FileUtils.deleteQuietly(movedFile);
     }
 	
-	public void testMoveFile2() throws Exception {
-    	File inputFile = File.createTempFile("Invoice", ".pdf"); 
+	public void testMoveFile2() throws AdminiMoverException {
+    	File inputFile = createTemporaryFile();
     	File movedFile = AdminFileService.moveFile(inputFile.getPath(), "Hooplot Holding BV", "20190823", "Good Music");
     	
         Path relativePath = Paths.get(Configuration.instance().getRootDirectory()).relativize(movedFile.toPath());
@@ -56,10 +59,10 @@ public class AdminFileServiceTest
     	FileUtils.deleteQuietly(movedFile);
     }
 	
-	public void testMoveFileDuplicate() throws Exception {
-    	File inputFile1 = File.createTempFile("Invoice", ".pdf"); 
+	public void testMoveFileDuplicate() throws AdminiMoverException {
+    	File inputFile1 = createTemporaryFile();
     	File movedFile1 = AdminFileService.moveFile(inputFile1.getPath(), "Hooplot Holding BV", "20180101", "Wilde Haren de Podcast");
-    	File inputFile2 = File.createTempFile("Invoice", ".pdf"); 
+    	File inputFile2 = createTemporaryFile();
     	File movedFile2 = AdminFileService.moveFile(inputFile2.getPath(), "Hooplot Holding BV", "20180101", "Wilde Haren de Podcast");
     	
         Path relativePath = Paths.get(Configuration.instance().getRootDirectory()).relativize(movedFile2.toPath());
@@ -69,8 +72,8 @@ public class AdminFileServiceTest
     	FileUtils.deleteQuietly(movedFile2);
     }
 	
-	public void testMoveFileInvalidCompanyName() throws Exception {
-    	File inputFile = File.createTempFile("Invoice", ".pdf"); 
+	public void testMoveFileInvalidCompanyName() throws AdminiMoverException {
+		File inputFile = createTemporaryFile();
     	File movedFile = null;
     	boolean thrown = false;
     	try {
@@ -82,8 +85,8 @@ public class AdminFileServiceTest
     	FileUtils.deleteQuietly(movedFile);
     }
 	
-	public void testMoveFileInvalidDate() throws Exception {
-    	File inputFile = File.createTempFile("Invoice", ".pdf"); 
+	public void testMoveFileInvalidDate() throws AdminiMoverException {
+    	File inputFile = createTemporaryFile();
     	File movedFile = null;
     	boolean thrown = false;
     	try {
@@ -94,5 +97,13 @@ public class AdminFileServiceTest
     	Assert.assertTrue(thrown);
     	FileUtils.deleteQuietly(movedFile);
     }
+	
+	private File createTemporaryFile() throws AdminiMoverException {
+		try {
+			return File.createTempFile("Invoice", ".pdf");
+		} catch (IOException e) {
+			throw new AdminiMoverException(e);
+		}
+	}
 
 }

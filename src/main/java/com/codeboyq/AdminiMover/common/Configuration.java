@@ -12,24 +12,25 @@ import org.slf4j.ext.XLogger;
 import org.slf4j.ext.XLoggerFactory;
 import org.yaml.snakeyaml.Yaml;
 
+import com.codeboyq.AdminiMover.AdminiMoverException;
 import com.codeboyq.AdminiMover.MainApp;
 import com.codeboyq.AdminiMover.domain.AdminPathFactory;
 
 public final class Configuration {
 	
 	private static final XLogger logger = XLoggerFactory.getXLogger(Configuration.class);
-	
-    private String rootDirectory;
+    
+	private static Configuration instance = null;
+    
+	private String rootDirectory;
     private String category;
     private List<String> myCompanies;
     private List<String> customers;
     
-    private static Configuration instance = null;
-
     private Configuration() {	
     }
     
-    public static Configuration instance() throws IOException {
+    public static Configuration instance() throws AdminiMoverException {
     	if (instance == null) {
     		instance = readConfiguration();
     		logger.debug(instance.toString());
@@ -80,7 +81,7 @@ public final class Configuration {
             .toString();
     }
 	
-    private static Configuration readConfiguration() throws IOException {
+    private static Configuration readConfiguration() throws AdminiMoverException {
 		logger.entry();	
 		InputStream in = null;
         try {
@@ -97,10 +98,14 @@ public final class Configuration {
 			
         } catch (IOException e) {
 			logger.error("Unable to read config file");
-			throw new IOException("Unable to read config file", e);
+			throw new AdminiMoverException("Unable to read config file", e);
 		} finally {
 			if (in!=null) {
-				in.close();
+				try {
+					in.close();
+				} catch (IOException e) {
+					throw new AdminiMoverException(e);
+				}
 			}
 		}
     	
