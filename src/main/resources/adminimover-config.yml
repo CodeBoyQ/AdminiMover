@@ -6,5 +6,22 @@ category: 1. Inkoop
 
 # My companies
 myCompanies:
-   - Hooplot Holding BV
-   - Hooplot Media BV
+	- Hooplot Holding BV
+	- Hooplot Media BV
+
+# Customers
+customers:
+  - Flexwebhosting
+  - MediaMarkt
+  - NSBusiness
+  - Parkmobile
+  - MKBBrandstof
+  - Amazon
+  - Ziggo
+  - CJIB
+  - 123Inkt
+  - ANWB
+  - Restaurant
+  - Crashplan
+  - DropBox
+  - Finovion

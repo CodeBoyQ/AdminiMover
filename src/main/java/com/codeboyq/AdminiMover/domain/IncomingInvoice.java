@@ -12,7 +12,7 @@ public class IncomingInvoice {
 	}
 	
 	public String getFilename() {
-		return invoiceDateString + " " + customer + ".pdf";
+		return String.format("%s %s.pdf", invoiceDateString, customer);
 	}
 	
 }

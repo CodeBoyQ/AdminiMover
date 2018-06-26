@@ -1,6 +1,8 @@
 package com.codeboyq.AdminiMover.service;
 
 import java.io.File;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -53,6 +55,30 @@ public class AdminFileService {
     	return logger.exit(destFile);
 
     } 
+    
+    public static boolean isValidAdminDate(String dateString) {
+    	logger.entry(dateString);
+		try {
+			DateTimeFormatter DATEFORMATTER = DateTimeFormatter.ofPattern("yyyyMMdd");
+			LocalDate.parse(dateString, DATEFORMATTER);
+			return logger.exit(true);
+		} catch (Exception e) {
+			return logger.exit(false);
+		}
+    }
+    
+    public static LocalDate getDate(String dateString) throws Exception {
+    	logger.entry(dateString);
+    	LocalDate date = null;
+		try {
+			DateTimeFormatter DATEFORMATTER = DateTimeFormatter.ofPattern("yyyyMMdd");
+			date = LocalDate.parse(dateString, DATEFORMATTER);
+		} catch (Exception e) {
+			logger.error("Please use a valid yyyyMMdd dateString. {} is not a valid String.", dateString);
+			throw new Exception();
+		}
+        return logger.exit(date);    	
+    }
 
     private static File getUniqueFilename(File file) {
     	logger.entry(file);

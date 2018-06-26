@@ -6,12 +6,12 @@ import java.nio.file.Paths;
 
 public class AdminPath {
 
-	String baseDirectory;
-	String myCompanyPart;
-	String yearPart;
-	String categoryPart;
-	String quarterPart;
-	String monthPart;
+	private String baseDirectory;
+	private String myCompanyPart;
+	private String yearPart;
+	private String categoryPart;
+	private String quarterPart;
+	private String monthPart;
 
 	public AdminPath(String baseDirectory, String myCompanyPart, String yearPart, String categoryPart,
 		String quarterPart, String monthPart) {
