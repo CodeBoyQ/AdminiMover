@@ -1,6 +1,7 @@
 package com.codeboyq.AdminiMover.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -47,13 +48,17 @@ public class AdminFileService {
     		throw new AdminiMoverException("Please supply a pdf");   		
     	}
     
-    	AdminPath adminPath = AdminPathFactory.instance().getAdminPath(myCompany, dateString, customer);
-    	IncomingInvoice invoice = new IncomingInvoice(dateString, customer);
-    	File destFile = new File(adminPath.getFile(), invoice.getFilename());
-    	destFile = getUniqueFilename(destFile);
-    	FileUtils.moveFile(srcFile, destFile);
-    	logger.info("File moved to {}", destFile.getAbsolutePath());
-    	return logger.exit(destFile);
+    	try {
+			AdminPath adminPath = AdminPathFactory.instance().getAdminPath(myCompany, dateString, customer);
+			IncomingInvoice invoice = new IncomingInvoice(dateString, customer);
+			File destFile = new File(adminPath.getFile(), invoice.getFilename());
+			destFile = getUniqueFilename(destFile);
+			FileUtils.moveFile(srcFile, destFile);
+			logger.info("File moved to {}", destFile.getAbsolutePath());
+			return logger.exit(destFile);
+		} catch (IOException e) {
+			throw new AdminiMoverException(e);
+		}
 
     } 
     
@@ -79,6 +84,11 @@ public class AdminFileService {
 			throw new AdminiMoverException("Please use a valid yyyyMMdd dateString. " + dateString + " is not a valid String.");
 		}
         return logger.exit(date);    	
+    }
+    
+    public static String getDateString(LocalDate date) {
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+    	return date.format(formatter);
     }
 
     private static File getUniqueFilename(File file) {

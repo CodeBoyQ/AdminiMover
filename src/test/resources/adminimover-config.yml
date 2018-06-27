@@ -1,27 +1,29 @@
 # Root directory
 rootDirectory: /Users/astronauta/Documents/java_workspaces/projects/AdminiMover/src/test/resources/RootFolder
 
-# Root directory
+# Category
 category: 1. Inkoop
 
 # My companies
 myCompanies:
-  - Hooplot Holding BV
-  - Hooplot Media BV
+- Hooplot Holding BV
+- Hooplot Media BV
 
 # Customers
 customers:
-  - Flexwebhosting
-  - MediaMarkt
-  - NSBusiness
-  - Parkmobile
-  - MKBBrandstof
-  - Amazon
-  - Ziggo
-  - CJIB
-  - 123Inkt
-  - ANWB
-  - Restaurant
-  - Crashplan
-  - DropBox
-  - Finovion
+- 123Inkt
+- Amazon
+- ANWB
+- CJIB
+- Coolblue
+- Crashplan
+- DropBox
+- Flexwebhosting
+- MediaMarkt
+- MKBBrandstof
+- NSBusiness
+- Parkeergarage
+- Parkmobile
+- Restaurant
+- Finovion
+- Ziggo

@@ -1,7 +1,6 @@
 package com.codeboyq.AdminiMover.domain;
 
 import java.io.File;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.time.temporal.IsoFields;
@@ -22,18 +21,18 @@ public class AdminPathFactory {
 	
 	private Configuration config = null;
 	
-	protected AdminPathFactory() throws IOException {
+	protected AdminPathFactory() throws AdminiMoverException {
 		config = Configuration.instance();
 	}
 	
-    public static AdminPathFactory instance() throws IOException {
+    public static AdminPathFactory instance() throws AdminiMoverException {
         if (instance == null) {
             instance = new AdminPathFactory();
         }
         return instance;
     }
 
-	public AdminPath getAdminPath(String myCompany, String dateString, String customer) {
+	public AdminPath getAdminPath(String myCompany, String dateString, String customer) throws AdminiMoverException {
 		logger.entry(myCompany, dateString, customer);
 		
 		checkRootDirectory(config.getRootDirectory());
