@@ -1,5 +1,6 @@
 package com.codeboyq.AdminiMover;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
@@ -41,14 +42,16 @@ public class MainApp {
     	
         try(Scanner scanner = new Scanner(System.in)){
         	
-        	System.out.println("AdminiMover");
-        	logger.info("Input file: {}", filePath);
+        	System.out.println("*****************************");
+        	System.out.println("* AdminiMover to the rescue *");
+        	System.out.println("*****************************");
+
+        	logger.debug("Input file: {}", filePath);
 
         	String myCompany = getUserInputFromList(Configuration.instance().getMyCompanies(), "Which Company?", scanner, 2, false);
         	String dateString = getDateInput("Which date? (Default is today)", scanner, true);
         	String customer = getUserInputFromList(Configuration.instance().getCustomers(), "Which Customer?", scanner, 1, true);
-
-        	AdminFileService.moveFile(filePath, myCompany, dateString, customer);
+        	System.out.println("File moved to: " + AdminFileService.moveFile(filePath, myCompany, dateString, customer));
 	
         }
  	

@@ -1,1 +1,1 @@
-This folder contains third-party plugins used to create the AdminiMover Droplet Application with MacOSX Automator
+This folder contains third-party plugins and scripts used to create the AdminiMover Droplet Application and Service with MacOSX Automator

@@ -89,7 +89,7 @@ public final class Configuration {
         	in = MainApp.class.getClassLoader().getResourceAsStream("adminimover-config.yml");
 			if (in == null) {
 				// Secondly try to read the configuration file directly from the filesystem (used when executable jar is ran)
-				logger.info("Jar file not on classpath. Reading directly from the filesystem");
+				logger.debug("Jar file not on classpath. Reading directly from the filesystem");
 				File jarPath = new File(AdminPathFactory.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 				String propertiesPath = jarPath.getParentFile().getAbsolutePath();
 				in = new FileInputStream(propertiesPath + "/adminimover-config.yml");
