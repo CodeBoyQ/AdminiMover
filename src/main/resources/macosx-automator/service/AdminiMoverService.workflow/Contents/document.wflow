@@ -94,7 +94,7 @@
 				<key>Class Name</key>
 				<string>GetFilePathAction</string>
 				<key>InputUUID</key>
-				<string>017B62D8-C9E8-41BF-BAE7-85208D6F665B</string>
+				<string>2D9D31F8-67FD-44EB-A74D-5EED6E7F187B</string>
 				<key>Keywords</key>
 				<array>
 					<string>Get</string>
@@ -104,9 +104,9 @@
 					<string>URL</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>5C3AD9A3-A630-4E7B-8EEB-533F071BDAAE</string>
+				<string>B3ABC58D-0474-4280-AA70-63647BFF5E89</string>
 				<key>UUID</key>
-				<string>441E5DE5-7327-436A-9475-5219DCB20944</string>
+				<string>465BBA03-3E4F-4C92-93F3-892612A29D9F</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Finder</string>
@@ -242,7 +242,7 @@
 						<key>isPathPopUp</key>
 						<false/>
 						<key>selectedVariableUUID</key>
-						<string>A977EA1E-2917-4647-A008-C26FDE66F530</string>
+						<string>B184A583-EF5C-4290-95FB-DAF6A2C9B9F8</string>
 					</dict>
 				</dict>
 				<key>AMProvides</key>
@@ -263,7 +263,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>variableUUID</key>
-					<string>A977EA1E-2917-4647-A008-C26FDE66F530</string>
+					<string>B184A583-EF5C-4290-95FB-DAF6A2C9B9F8</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.SetValueofVariable</string>
@@ -280,7 +280,7 @@
 				<key>Class Name</key>
 				<string>Set_Value_of_Variable</string>
 				<key>InputUUID</key>
-				<string>313B9B46-54B8-4A31-80A0-78DD735D9701</string>
+				<string>EA799D3C-A162-48D7-B487-9C437BEB8643</string>
 				<key>Keywords</key>
 				<array>
 					<string>variable</string>
@@ -290,9 +290,9 @@
 					<string>storage</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>98D6098F-302A-4E34-A34E-A5C86652EC46</string>
+				<string>5244A8A9-6D15-45F7-AC12-B225AC044617</string>
 				<key>UUID</key>
-				<string>8C1F9056-F5C6-4DD7-B36B-149DB3FE412C</string>
+				<string>02DFDAE4-B088-40FF-B47E-094510479782</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -364,7 +364,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>on run {input, parameters}-- Get the directory of the scripttell application "Finder"    set currentDir to POSIX path of ((container of (path to me)) as text)end tell-- Run the Shell script with the Automator FilePath variable as parametertell application "Terminal"    activate	set filePath to (item 1 of input)	do script "cd '" &amp; currentDir &amp; "/_AdminiMoverBinaries' &amp;&amp; ./run.sh '" &amp; filePath &amp; "'"end tellend run</string>
+					<string>on run {input, parameters}-- Get the directory of the scripttell application "Finder"   set currentDir to POSIX path of (path to applications folder as text)end tell-- Run the Shell script with the Automator FilePath variable as parametertell application "Terminal"    activate	set filePath to (item 1 of input)	do script "cd '" &amp; currentDir &amp; "/_AdminiMoverBinaries' &amp;&amp; ./run.sh '" &amp; filePath &amp; "'"end tellend run</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
@@ -381,15 +381,15 @@
 				<key>Class Name</key>
 				<string>RunScriptAction</string>
 				<key>InputUUID</key>
-				<string>58549DAA-D82B-44AB-9D8F-1241FB2ACF1E</string>
+				<string>1CA61D00-C5FC-4317-B031-30450CDC6CB6</string>
 				<key>Keywords</key>
 				<array>
 					<string>Run</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>373CB554-0E29-4C08-BD79-20F8BC9A4D23</string>
+				<string>E4A7365B-140F-46AE-82EE-511F74FB7FA1</string>
 				<key>UUID</key>
-				<string>7430EE39-4A51-4A1A-B00E-91C74E8130E1</string>
+				<string>6406769D-06CC-4357-8D5E-8450DEEED24F</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -428,38 +428,42 @@ end run</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>E42E2FFB-8B65-4B09-94A4-3B8924564A7F</key>
+		<key>026D99CE-FDAA-4DD9-B953-3E52EAA84A2F</key>
 		<dict>
 			<key>from</key>
-			<string>8C1F9056-F5C6-4DD7-B36B-149DB3FE412C - 8C1F9056-F5C6-4DD7-B36B-149DB3FE412C</string>
+			<string>465BBA03-3E4F-4C92-93F3-892612A29D9F - 465BBA03-3E4F-4C92-93F3-892612A29D9F</string>
 			<key>to</key>
-			<string>7430EE39-4A51-4A1A-B00E-91C74E8130E1 - 7430EE39-4A51-4A1A-B00E-91C74E8130E1</string>
+			<string>02DFDAE4-B088-40FF-B47E-094510479782 - 02DFDAE4-B088-40FF-B47E-094510479782</string>
 		</dict>
-		<key>F738C50D-31BB-4E45-B561-76F3522774A7</key>
+		<key>9F3B787A-F684-4140-BF4D-E80FD41674D1</key>
 		<dict>
 			<key>from</key>
-			<string>441E5DE5-7327-436A-9475-5219DCB20944 - 441E5DE5-7327-436A-9475-5219DCB20944</string>
+			<string>02DFDAE4-B088-40FF-B47E-094510479782 - 02DFDAE4-B088-40FF-B47E-094510479782</string>
 			<key>to</key>
-			<string>8C1F9056-F5C6-4DD7-B36B-149DB3FE412C - 8C1F9056-F5C6-4DD7-B36B-149DB3FE412C</string>
+			<string>6406769D-06CC-4357-8D5E-8450DEEED24F - 6406769D-06CC-4357-8D5E-8450DEEED24F</string>
 		</dict>
 	</dict>
 	<key>variables</key>
 	<array>
 		<dict>
 			<key>UUID</key>
-			<string>A977EA1E-2917-4647-A008-C26FDE66F530</string>
+			<string>B184A583-EF5C-4290-95FB-DAF6A2C9B9F8</string>
 			<key>identifier</key>
-			<string>com.apple.Automator.Variable.Text</string>
+			<string>com.apple.Automator.Variable.Storage</string>
 			<key>name</key>
 			<string>FilePath</string>
-			<key>value</key>
-			<string>/Users/astronauta/Documents/Readme.txt</string>
 		</dict>
 	</array>
 	<key>workflowMetaData</key>
 	<dict>
+		<key>serviceInputTypeIdentifier</key>
+		<string>com.apple.Automator.fileSystemObject</string>
+		<key>serviceOutputTypeIdentifier</key>
+		<string>com.apple.Automator.nothing</string>
+		<key>serviceProcessesInput</key>
+		<integer>0</integer>
 		<key>workflowTypeIdentifier</key>
-		<string>com.apple.Automator.application</string>
+		<string>com.apple.Automator.servicesMenu</string>
 	</dict>
 </dict>
 </plist>

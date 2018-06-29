@@ -5,7 +5,7 @@
 
 	<groupId>com.codeboyq</groupId>
 	<artifactId>AdminiMover</artifactId>
-	<version>1.0.1</version>
+	<version>1.1.0</version>
 	<packaging>jar</packaging>
 
 	<name>AdminiMover</name>
@@ -25,8 +25,13 @@
 		<maven.dependecy.plugin.version>3.1.1</maven.dependecy.plugin.version>
 		<maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
 		<maven.antrun.plugin.version>1.8</maven.antrun.plugin.version>
-		<output.dir>dist/AdminiMoverApp</output.dir>
-		<output.dir.binaries>${output.dir}/_Binaries</output.dir.binaries>
+		<output.dir>dist</output.dir>
+		<output.dir.app>${output.dir}/AdminiMoverApp</output.dir.app>
+		<output.dir.service>${output.dir}/AdminiMoverService</output.dir.service>
+		<output.dir.app.binaries>${output.dir.app}/_AdminiMoverBinaries</output.dir.app.binaries>
+		<output.dir.service.binaries>${output.dir.service}/_AdminiMoverBinaries</output.dir.service.binaries>
+		<temp.output.dir>target</temp.output.dir>
+		<temp.output.dir.binaries>${temp.output.dir}/_AdminiMoverBinaries</temp.output.dir.binaries>
 	</properties>
 
 	<dependencies>
@@ -87,55 +92,14 @@
 						<fileset>
 							<directory>${output.dir}</directory>
 						</fileset>
+						<fileset>
+							<directory>${temp.output.dir}</directory>
+						</fileset>
 					</filesets>
 				</configuration>
 			</plugin>
-
-			<!-- Copy the resources to the output directory -->
-			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>${maven.resources.plugin.version}</version>
-				<executions>
-					<execution>
-						<id>copy-resources</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${output.dir.binaries}</outputDirectory>
-							<resources>
-								<resource>
-									<directory>src/main/resources</directory>
-									<includes>
-										<include>adminimover-config.yml</include>
-										<include>logback.xml</include>
-										<include>run.sh</include>
-									</includes>
-									<filtering>true</filtering>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-					<execution>
-						<id>copy-resources-automator-app</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${output.dir}</outputDirectory>
-							<resources>
-								<resource>
-									<directory>src/main/resources/macosx-automator/application</directory>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!-- Copy the dependencies to a lib subfolder in the output directory -->
+			
+			<!-- Copy the dependencies to a lib subfolder in the temporary output directory -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -149,14 +113,14 @@
 						</goals>
 						<configuration>
 							<outputDirectory>
-								${output.dir.binaries}/libs
+								${temp.output.dir.binaries}/libs
 							</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 
-			<!-- Create the executable jar -->
+			<!-- Create the executable jar in the temporary output directory -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -171,15 +135,106 @@
 							<mainClass>com.codeboyq.AdminiMover.MainApp</mainClass>
 						</manifest>
 					</archive>
-					<outputDirectory>${output.dir.binaries}</outputDirectory>
+					<outputDirectory>${temp.output.dir.binaries}</outputDirectory>
 					<finalName>adminiMoverApp</finalName>
 					<excludes>
 						<exclude>**/*.yml</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
+			
+			<!-- Copy the resources to the temporary output directory -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${temp.output.dir.binaries}</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources</directory>
+									<includes>
+										<include>adminimover-config.yml</include>
+										<include>logback.xml</include>
+										<include>run.sh</include>
+									</includes>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<!-- Create the Automator Application folder and copy the temporary output directory -->
+					<execution>
+						<id>copy-resources-automator-app</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${output.dir.app}</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources/macosx-automator/application</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-resources-automator-app-binaries</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${output.dir.app.binaries}</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${temp.output.dir.binaries}</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<!-- Create the Automator Service folder and copy the temporary output directory -->				
+					<execution>
+						<id>copy-resources-automator-service</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${output.dir.service}</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources/macosx-automator/service</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>	
+					<execution>
+						<id>copy-resources-automator-service-binaries</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${output.dir.service.binaries}</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${temp.output.dir.binaries}</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>																	
+				</executions>
+			</plugin>
 
-			<!-- Grant Execute rights to the Automator Application and the Shell script -->
+			<!-- Grant Execute rights to the Automator Application, Service and the Shell script -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
@@ -187,13 +242,13 @@
 				<executions>
 					<execution>
 						<id>process-test-classes</id>
-						<phase>process-test-classes</phase>
+						<phase>verify</phase>
 						<configuration>
 							<target>
-								<chmod
-									dir="${output.dir}/AdminiMover.app/Contents/MacOS/Application Stub"
-									perm="755" />
-								<chmod file="${output.dir.binaries}/run.sh" perm="755" />
+								<chmod dir="${output.dir.app}/AdminiMover.app/Contents/MacOS/Application Stub" perm="755" />
+								<chmod file="${output.dir.app.binaries}/run.sh" perm="755" />
+								<chmod dir="${output.dir.service}/AdminiMover.app/Contents/MacOS/Application Stub" perm="755" />
+								<chmod file="${output.dir.service.binaries}/run.sh" perm="755" />
 							</target>
 						</configuration>
 						<goals>
@@ -202,6 +257,8 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+
 		</plugins>
 	</build>
 </project>
