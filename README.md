@@ -13,6 +13,8 @@ macOS High Sierra or later
 
 ## Installation
 
+AdminiMover can be used as Application (drag the files onto the application to process the file) or as a Service (use the context menu on a file to process the file)
+
 ### Application
 
 No installation required. Copy the `AdminiMoverApp` folder anywhere and 
